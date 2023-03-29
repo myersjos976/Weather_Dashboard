@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+        <div class="wrapper">
+            <!-- Creates header bar. -->
+            <header>
+                <h1><span>Weather Dashboard</span></h1>
+            </header>
+
+            <!-- Creates aside. -->
+            <aside>
+                <!-- Creates Search Bar. -->
+                <section>
+                    <div>
+                        <h2>Search for a City:</h2>
+                        <input type="city" name="search-box" id="search-box" placeholder="Denver"/>
+                    </div>
+                    <div>
+                        <button id="search-button" class="btn">Search</button>
+                    </div>
+                </section>
+
+                <!-- Creates search history. -->
+                <section>
+                    <div class="history" id="history-0"></div>
+                    <div class="history" id="history-1"></div>
+                    <div class="history" id="history-2"></div>
+                    <div class="history" id="history-3"></div>
+                    <div class="history" id="history-4"></div>
+                    <div class="history" id="history-5"></div>
+                    <div class="history" id="history-6"></div>
+                    <div class="history" id="history-7"></div>
+                    <div class="history" id="history-8"></div>
+                    <div class="history" id="history-9"></div>
+                </section>
+            </aside>
+
+            <!-- Creates today's forecast section for selected city. -->
+
+            <article id="forecast-body">
+                <section id="selected-city">
+                    <h2 id="city-header"></h2>
+                    <div class="data" id="temp"></div>
+                    <div class="data" id="wind"></div>
+                    <div class="data" id="hum"></div>
+                </section>
+
+                <!-- Creates 5 day forecast section for selected city. -->
+            
+                <div>
+                    <h3>5-day Forecast:</h3>
+                </div>
+                <section id="forecast-cards">
+                    <div class="card" id="day-0">Card1</div>
+                    <div class="card" id="day-1">Card2</div>
+                    <div class="card" id="day-2">Card3</div>
+                    <div class="card" id="day-3">Card4</div>
+                    <div class="card" id="day-4">Card5</div>
+                </section>
+            </article>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"></script>
+        <script src="./assets/script.js"></script>
+  </body>
+</html>
