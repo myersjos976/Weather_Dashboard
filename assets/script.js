@@ -27,6 +27,13 @@ function getHistory()
     }
 }
 
+// Clears user history and local storage when called.
+function clearHistory()
+{
+    localStorage.clear();
+    historyList = [];
+}
+
 /*
     Grabs today's forecast for the given city.
     Displays the 5 day forecast for the given city.
@@ -42,12 +49,23 @@ function getForecast(cityName)
         // Header containing city name, today's date, and weather icon. 
         var cityHeader = document.getElementById("city-header");
         cityHeader.innerHTML = data.city.name + " (" + getCurrentDate() + ")";
-
+        
         // Weather icon retrieval not working.
         // document.ElementById("icon-0").src = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png";
 
-        // Add city to history.
-        historyList.push(cityName);
+        // Converts user's entered city to proper format from OpenWeather and adds it to history.
+        cityName = data.city.name;
+        if (historyList.includes(cityName) === false) {
+            // If history is less than 10, push the new city to the end of the array.
+            if (historyList.length < 10) {
+                historyList.push(cityName);
+            }
+            // Else, remove the oldest city and then push the new city to the end of the array.
+            else {
+                historyList.shift();
+                historyList.push(cityName);
+            }
+        }
 
         // Temperature
         const nodeTemp0 = document.createElement("p");
