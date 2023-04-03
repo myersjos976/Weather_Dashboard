@@ -1,7 +1,7 @@
 :root {
     --header-blue: #0044ff;
     --button-blue: #4072cf;
-    --button-gray: #7c8491;
+    --button-gray: #bec3c7;
     --card-blue: #313d64;
 }
 
@@ -38,21 +38,52 @@ aside {
 }
 
 #search-button {
+    width: 175px;
+    display: inline-block;
     padding-top: 3%;
     padding-bottom: 3%;
     padding-left: 35%;
     padding-right: 35%;
     background-color: var(--button-blue);
-    border: solid 2px var(--button-blue);
+    border: solid 3px var(--button-blue);
     border-radius: 4px;
     color: white;
 }
 
 #search-button:hover {
-    border-color: #243e6e;
+    border-color: #4ea1ff;
 }
 
+.btn {
+    width: 175px;
+    display: inline-block;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 35%;
+    padding-right: 35%;
+    background-color: var(--button-gray);
+    border: solid 3px var(--button-gray);
+    border-radius: 4px;
+    color: black;
+}
 
+.btn:hover {
+    border-color: #cddfff;
+}
+
+.history {
+    margin-top: 8%;
+}
+
+#forecast-body {
+    display: flex;
+    flex-direction: column;
+    margin-right: 4%;
+}
+
+.data {
+    line-height: 20px;
+}
 
 #selected-city {
     display: flex;
@@ -63,10 +94,8 @@ aside {
     border: 1px solid black;
 }
 
-#forecast-body {
-    display: flex;
-    flex-direction: column;
-    margin-right: 4%;
+#city-header-bar {
+    display: inline-flex;
 }
 
 #forecast-cards {
@@ -76,7 +105,10 @@ aside {
 
 .card {
     display: flex;
-    padding: 1%;
+    flex-direction: column;
+    padding-left: 1%;
+    padding-right: 4%;
+    padding-bottom: 2%;
     background-color: var(--card-blue);
     color: white;
     margin-right: 2%;

@@ -23,7 +23,7 @@
                         <input type="city" name="search-box" id="search-box" placeholder="Denver"/>
                     </div>
                     <div>
-                        <button id="search-button" class="btn">Search</button>
+                        <button id="search-button" class="search-btn">Search</button>
                     </div>
                 </section>
 
@@ -46,8 +46,10 @@
 
             <article id="forecast-body">
                 <section id="selected-city">
-                    <h2 id="city-header"></h2>
-                    <img id="icon-0"/>
+                    <div id="city-header-bar">
+                        <h2 id="city-header"></h2>
+                        <img id="icon-0" width="50" height="50"/>
+                    </div>
                     <div class="data" id="temp-0"></div>
                     <div class="data" id="wind-0"></div>
                     <div class="data" id="hum-0"></div>
@@ -60,26 +62,46 @@
                 </div>
                 <section id="forecast-cards">
                     <div class="card" id="day-1">
+                        <div id="header-bar-1">
+                            <h3 id="date-header-1"></h3>
+                            <img id="icon-1" width="50" height="50"/>
+                        </div>
                         <div class="data" id="temp-1"></div>
                         <div class="data" id="wind-1"></div>
                         <div class="data" id="hum-1"></div>
                     </div>
                     <div class="card" id="day-2">
+                        <div id="header-bar-2">
+                            <h3 id="date-header-2"></h3>
+                            <img id="icon-2" width="50" height="50"/>
+                        </div>
                         <div class="data" id="temp-2"></div>
                         <div class="data" id="wind-2"></div>
                         <div class="data" id="hum-2"></div>
                     </div>
                     <div class="card" id="day-3">
+                        <div id="header-bar-3">
+                            <h3 id="date-header-3"></h3>
+                            <img id="icon-3" width="50" height="50"/>
+                        </div>
                         <div class="data" id="temp-3"></div>
                         <div class="data" id="wind-3"></div>
                         <div class="data" id="hum-3"></div>
                     </div>
                     <div class="card" id="day-4">
+                        <div id="header-bar-4">
+                            <h3 id="date-header-4"></h3>
+                            <img id="icon-4" width="50" height="50"/>
+                        </div>
                         <div class="data" id="temp-4"></div>
                         <div class="data" id="wind-4"></div>
                         <div class="data" id="hum-4"></div>
                     </div>
                     <div class="card" id="day-5">
+                        <div id="header-bar-5">
+                            <h3 id="date-header-5"></h3>
+                            <img id="icon-5" width="50" height="50"/>
+                        </div>
                         <div class="data" id="temp-5"></div>
                         <div class="data" id="wind-5"></div>
                         <div class="data" id="hum-5"></div>
@@ -88,7 +110,6 @@
             </article>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"></script>
         <script src="./assets/script.js"></script>
   </body>
 </html>
