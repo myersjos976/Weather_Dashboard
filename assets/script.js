@@ -1,4 +1,5 @@
 var searchButton = document.getElementById("search-button");
+var clearButton = document.getElementById("clear-button");
 var historyList;
 
 //Takes in a date from data.list and converts its format to mm/dd/yyyy.
@@ -36,6 +37,7 @@ function getHistory()
                 //Create an event listener to make the button functional.
                 buttonList[i].addEventListener("click", function(event) {
                     event.preventDefault();
+                    document.getElementById("forecast-body").style.visibility = "visible";
                     getForecast(city);
                 });
             }
@@ -158,12 +160,20 @@ function getForecast(cityName)
 }
 
 getHistory();
+document.getElementById("forecast-body").style.visibility = "hidden";
 
 // Creates search button that grabs user input and gets forecast for that city from getForecast function.
 searchButton.addEventListener("click", function(event) {
-    event.preventDefault();
     let cityNameInput = document.getElementById("search-box").value;
+    event.preventDefault();
     if(cityNameInput.length > 0) {
+        document.getElementById("forecast-body").style.visibility = "visible";
         getForecast(cityNameInput);
     }
+});
+
+// Creates clear button that clears history and refreshes the page.
+clearButton.addEventListener("click", function(event) {
+    clearHistory();
+    location.reload();
 });

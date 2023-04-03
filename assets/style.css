@@ -2,6 +2,7 @@
     --header-blue: #0044ff;
     --button-blue: #4072cf;
     --button-gray: #bec3c7;
+    --button-red: #dd3939;
     --card-blue: #313d64;
 }
 
@@ -45,13 +46,13 @@ aside {
     padding-left: 35%;
     padding-right: 35%;
     background-color: var(--button-blue);
-    border: solid 3px var(--button-blue);
+    border: solid 2px var(--button-blue);
     border-radius: 4px;
     color: white;
 }
 
 #search-button:hover {
-    border-color: #4ea1ff;
+    background-color: #3488e7;
 }
 
 .btn {
@@ -62,17 +63,35 @@ aside {
     padding-left: 35%;
     padding-right: 35%;
     background-color: var(--button-gray);
-    border: solid 3px var(--button-gray);
+    border: solid 2px var(--button-gray);
     border-radius: 4px;
     color: black;
 }
 
 .btn:hover {
-    border-color: #cddfff;
+    background-color: #c2cde4;
 }
 
 .history {
     margin-top: 8%;
+}
+
+#clear-button {
+    margin-top: 8%;
+    width: 175px;
+    display: inline-block;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 35%;
+    padding-right: 35%;
+    background-color: var(--button-red);
+    border: solid 2px var(--button-red);
+    border-radius: 4px;
+    color: white;
+}
+
+#clear-button:hover {
+    background-color: #ff5b5b;
 }
 
 #forecast-body {
@@ -89,6 +108,7 @@ aside {
     display: flex;
     flex-direction: column;
     padding-right: 4%;
+    padding-left: 1%;
     padding-top: 2%;
     padding-bottom: 2%;
     border: 1px solid black;
