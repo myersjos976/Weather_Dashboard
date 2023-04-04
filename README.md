@@ -13,7 +13,7 @@ Challenge 06 Assignment for Coding Bootcamp. Creates a weather dashboard with a 
 - [License](#license)
 
 ## Installation
-Link to deployed webpage:
+Link to deployed webpage: https://myersjos976.github.io/Weather_Dashboard/
 
 ## Usage
 The user can search for a specific city in the search bar to see it's 5 day forecast. Any cities searched are stored in search history in local storage. The user can click on any recently searched city below the search bar to more convenienty check its forecast. 
