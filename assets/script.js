@@ -111,9 +111,9 @@ function getForecast(cityName)
                 let nthDate = formatDate(data.list[i].dt_txt);
                 let dateHeader = document.getElementById("date-header-" + dayCount);
                 dateHeader.innerHTML = nthDate;
-                // let icon = document.getElementById("icon-" + dayCount);
-                // icon.src = "https://openweathermap.org/img/wn/" + data.list[i].weather[i].icon + "@2x.png";
-                // icon.alt = data.list[i].weather[i].main + " (" + data.list[i].weather[i].description + ")";
+                let icon = document.getElementById("icon-" + dayCount);
+                icon.src = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+                icon.alt = data.list[i].weather[0].main + " (" + data.list[i].weather[0].description + ")";
 
                 // Temperature
                 let nodeTemp = document.createElement("p");
@@ -159,8 +159,9 @@ function getForecast(cityName)
     .catch(err => alert("Unable To Retrieve Weather: Check that city spelling is correct."))
 }
 
-getHistory();
+// When page is loaded, get history and make forecast body invisible.
 document.getElementById("forecast-body").style.visibility = "hidden";
+getHistory();
 
 // Creates search button that grabs user input and gets forecast for that city from getForecast function.
 searchButton.addEventListener("click", function(event) {

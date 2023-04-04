@@ -6,6 +6,10 @@
     --card-blue: #313d64;
 }
 
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body {
     height: 100%;
     display: flex;
@@ -116,6 +120,15 @@ aside {
 
 #city-header-bar {
     display: inline-flex;
+}
+
+#city-header-bar h2 {
+    margin-right: 1%;
+}
+
+img {
+    background-color: rgb(166, 232, 252);
+    border-radius: 12px;
 }
 
 #forecast-cards {
