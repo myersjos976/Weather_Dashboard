@@ -20,8 +20,9 @@ Link to deployed webpage: https://myersjos976.github.io/Weather_Dashboard/
 The user can search for a specific city in the search bar to see it's 5 day forecast. Any cities searched are stored in search history in local storage. The user can click on any recently searched city below the search bar to more convenienty check its forecast. 
 
 ## Credits
-Joshua Myers, U of U Bootcamp
-Implements OpenWeather's 5-day forecast
+Joshua Myers, U of U Bootcamp  
+Implements OpenWeather's 5-day forecast  
+Implements Day.js
 
 ## License
 Unlicensed and for public use.
