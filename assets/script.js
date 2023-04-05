@@ -2,7 +2,7 @@ var searchButton = document.getElementById("search-button");
 var clearButton = document.getElementById("clear-button");
 var historyList;
 
-//Takes in a date from data.list and converts its format to mm/dd/yyyy.
+// Takes in a date from data.list and converts its format to mm/dd/yyyy.
 function formatDate(date)
 {
     var nthDtArray = date.split(" ");
@@ -10,6 +10,13 @@ function formatDate(date)
     nthDtArray = nthDate.split("-");
     nthDate = nthDtArray[1] + "/" + nthDtArray[2] + "/" + nthDtArray[0];
     return nthDate;
+}
+
+// Return today's day.
+function getCurrentDate()
+{
+    const dayjsObj = dayjs();
+    return dayjsObj.format("MM/DD/YYYY");
 }
 
 // Grabs user history from local storage of cities searched for.
@@ -38,7 +45,7 @@ function getHistory()
                 buttonList[i].addEventListener("click", function(event) {
                     event.preventDefault();
                     document.getElementById("forecast-body").style.visibility = "visible";
-                    getForecast(city);
+                    getTodaysForecast(city);
                 });
             }
         }
@@ -58,45 +65,60 @@ function clearHistory()
 
 /*
     Displays today's forecast for the given city.
-    Displays the 5 day forecast for the given city.
-    Takes the city and stores it in search history.
+    Calls get5DayForecast().
 */
-function getForecast(cityName)
+function getTodaysForecast(cityName)
 {
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=f8ce8be1f8cd78a294e4234bae044e80")
-    
+    // CREATES TODAY'S FORECAST
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=f8ce8be1f8cd78a294e4234bae044e80")
     .then(response => response.json())
-    .then(data => {
-        // CREATES TODAY'S FORECAST
+    .then(data => {  
         // Header containing city name, today's date, and weather icon. 
         var cityHeader = document.getElementById("city-header");
-        cityHeader.innerHTML = data.city.name + " (" + formatDate(data.list[0].dt_txt) + ")";
+        cityHeader.innerHTML = data.name + " (" + getCurrentDate() + ")";
+        cityName = data.name;
 
         // Weather Icon
         var icon0 = document.getElementById("icon-0");
-        icon0.src = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png";
-        icon0.alt = data.list[0].weather[0].main + " (" + data.list[0].weather[0].description + ")";
+        icon0.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+        icon0.alt = data.weather[0].main + " (" + data.weather[0].description + ")";
 
         // Temperature
         const nodeTemp0 = document.createElement("p");
         nodeTemp0.setAttribute("id", "temp-content-0");
         document.getElementById("temp-0").appendChild(nodeTemp0);
-        document.getElementById("temp-content-0").innerHTML = "Temperature: " + Number(1.8 * (data.list[0].main.temp - 273) + 32).toFixed(1) + "° F";
+        document.getElementById("temp-content-0").innerHTML = "Temperature: " + Number(1.8 * (data.main.temp - 273) + 32).toFixed(1) + "° F";
 
         // Wind Speed
         const nodeWind0 = document.createElement("p");
         nodeWind0.setAttribute("id", "wind-content-0");
         document.getElementById("wind-0").appendChild(nodeWind0);
-        document.getElementById("wind-content-0").innerHTML = "Wind: " + Number(data.list[0].wind.speed * 2.237).toFixed(1) + " MPH";
+        document.getElementById("wind-content-0").innerHTML = "Wind: " + Number(data.wind.speed * 2.237).toFixed(1) + " MPH";
         
         // Humidity
         const nodeHum0 = document.createElement("p");
         nodeHum0.setAttribute("id", "hum-content-0");
         document.getElementById("hum-0").appendChild(nodeHum0);
-        document.getElementById("hum-content-0").innerHTML = "Humidity: " + Number(data.list[0].main.humidity).toFixed(1) + "%";
+        document.getElementById("hum-content-0").innerHTML = "Humidity: " + Number(data.main.humidity).toFixed(1) + "%";
 
+        get5DayForecast(cityName);
+    })
 
-        // CREATES 5 DAY FORECAST
+    // If the fetch failed, return alert to user to check their internet connection.
+    .catch(err => alert("Unable To Retrieve Weather: Check that city spelling is correct."))
+}
+
+/*
+    Displays the 5 day forecast for the given city.
+    Takes the city and stores it in search history.
+*/
+function get5DayForecast(cityName)
+{
+    // CREATES 5 DAY FORECAST
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=f8ce8be1f8cd78a294e4234bae044e80")
+    .then(response => response.json())
+    .then(data => { 
+        cityName = data.name;
         var dayCount = 0;
         var dtArray = data.list[0].dt_txt.split(" ");
         var currentDate = dtArray[0];
@@ -104,7 +126,7 @@ function getForecast(cityName)
         {
             // Only grab 5 day forecast from data.list if the time is 12pm and the date isn't today.
             // Ensures that the weather is only grabbed once per day for 5 day forecast and today's forecast isn't grabbed again. 
-            if (data.list[i].dt_txt.includes("12:00:00") && (data.list[i].dt_txt.includes(currentDate) === false)) {              
+            if (data.list[i].dt_txt.includes("12:00:00")) {              
                 dayCount++;
 
                 // Weather Date and Icon
@@ -135,7 +157,6 @@ function getForecast(cityName)
             }           
         }
 
-
         // ADD CITY TO HISTORY
         // Converts user's entered city to proper format from OpenWeather and adds it to history.
         cityName = data.city.name;
@@ -163,13 +184,13 @@ function getForecast(cityName)
 document.getElementById("forecast-body").style.visibility = "hidden";
 getHistory();
 
-// Creates search button that grabs user input and gets forecast for that city from getForecast function.
+// Creates search button that grabs user input and gets forecast for that city from getTodaysForecast function.
 searchButton.addEventListener("click", function(event) {
     let cityNameInput = document.getElementById("search-box").value;
     event.preventDefault();
     if(cityNameInput.length > 0) {
         document.getElementById("forecast-body").style.visibility = "visible";
-        getForecast(cityNameInput);
+        getTodaysForecast(cityNameInput);
     }
 });
 
