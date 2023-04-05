@@ -21,8 +21,8 @@ The user can search for a specific city in the search bar to see it's 5 day fore
 
 ## Credits
 Joshua Myers, U of U Bootcamp  
-Implements OpenWeather's 5-day forecast  
-Implements Day.js
+Implements OpenWeather's 5-day forecast API  
+Implements Day.js API
 
 ## License
 Unlicensed and for public use.
