@@ -3,7 +3,8 @@
 ## Description
 Challenge 06 Assignment for Coding Bootcamp. Creates a weather dashboard with a 5 day forecast using the OpenWeather 5 day weather forecast API. Contains a search bar for city specific weather and search history to remember user searches.
 
-## Screenshot
+## Screenshot ![image](https://user-images.githubusercontent.com/122832005/229977352-6cb8c54b-e5d5-43c6-98c4-15a06075d426.png)
+
 
 
 ## Table of Contents
